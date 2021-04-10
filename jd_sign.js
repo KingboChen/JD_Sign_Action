@@ -48,8 +48,10 @@ function setupCookie() {
 }
 
 function sendNotificationIfNeed() {
-
-  if (!push_key) {
+   let text = "京东签到_" + new Date().Format('yyyy.MM.dd');
+  let desp = fs.readFileSync(result_path, "utf8")
+  console.log(desp);
+if (!push_key) {
     console.log('执行任务结束!'); return;
   }
 
@@ -57,8 +59,7 @@ function sendNotificationIfNeed() {
     console.log('没有执行结果，任务中断!'); return;
   }
 
-  let text = "京东签到_" + new Date().Format('yyyy.MM.dd');
-  let desp = fs.readFileSync(result_path, "utf8")
+ 
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
